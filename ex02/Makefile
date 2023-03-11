@@ -1,8 +1,8 @@
-SRC_FILE = main.cpp BitcoinExchange.cpp
+SRC_FILE = main.cpp PmergeMe.cpp
 
 OBJ_FILE = $(SRC_FILE:.cpp=.o)
 
-NAME = btc
+NAME = PmergeMe
 
 CC = c++
 
