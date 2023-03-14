@@ -10,12 +10,12 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all:$(NAME)
 %.o:%.cpp
-	@$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 $(NAME) : $(OBJ_FILE)
-	@$(CC) $(FLAGS) $(OBJ_FILE) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJ_FILE) -o $(NAME)
 clean :
-	@rm -rf $(OBJ_FILE)
+	rm -rf $(OBJ_FILE)
 fclean :
-	@rm -rf $(OBJ_FILE) $(NAME)
+	rm -rf $(OBJ_FILE) $(NAME)
 re : fclean all
 .PHONY : clean fclean re

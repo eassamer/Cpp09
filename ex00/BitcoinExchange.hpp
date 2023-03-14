@@ -1,9 +1,11 @@
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <iostream>
 #include <queue>
+#include <fstream>
+#include <iostream>
 #include <cstdlib>
+
 class BitcoinExchange {
     private :
         std::string data;

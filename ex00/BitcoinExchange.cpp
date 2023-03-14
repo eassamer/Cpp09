@@ -98,5 +98,30 @@ void BitcoinExchange::add_data(std::string data) {
 	}
 	this->time = _time;
 	this->value = _value;
-	std::cout << this->time << " => " << this->value << " = " <<std::endl;
+	std::ifstream f("data.csv");
+	if (!f.is_open())
+	{
+		std::cout << "Error: file not found." << std::endl;
+		return ;
+	}
+	std::string line;
+	float price = -1;
+	while(getline(f, line))
+	{
+		if (strcmp(_time.c_str(), line.substr(0, line.find(',')).c_str()) == 0)
+		{
+
+			price = atof(line.substr(line.find(',') + 1, line.size() - 1).c_str());
+		}
+		else if (strcmp(_time.c_str(), line.substr(0, line.find(',')).c_str()) > 0)
+		{
+			price = atof(line.substr(line.find(',') + 1, line.size() - 1).c_str());
+		}
+	}
+	if (price == -1)
+	{
+		std::cout << "Error: no price for this time." << std::endl;
+		return ;
+	}
+	std::cout << this->time << " => " << this->value << " = " << (float)(price * value) << std::endl;
 }
