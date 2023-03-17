@@ -20,7 +20,7 @@ BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const & rhs) {
 }
 
 int	BitcoinExchange::check_time(std::string time) {
-		int count;
+	int count;
 
 	count = 0;
 	for (size_t i = 0; i < time.length(); i++) {
@@ -30,6 +30,15 @@ int	BitcoinExchange::check_time(std::string time) {
 	}
 	if (count != 2) {
 		std::cout << "Invalid time" << std::endl;
+		return 0;
+	}
+	int a,b,c;
+	if (sscanf(time.c_str(), "%d-%d-%d", &a, &b, &c) != 3) {
+		std::cout << "Invalid Time" << std::endl;
+		return 0;
+	}
+	if (a < 0 || a > 9999 || b < 0 || b > 12 || c < 0 || c > 31) {
+		std::cout << "Invalid Time" << std::endl;
 		return 0;
 	}
 	return (1);
@@ -123,5 +132,5 @@ void BitcoinExchange::add_data(std::string data) {
 		std::cout << "Error: no price for this time." << std::endl;
 		return ;
 	}
-	std::cout << this->time << " => " << this->value << " = " << (float)(price * value) << std::endl;
+	std::cout << this->time << " => " << this->value << " = " << ((float)(price * value)) << std::endl;
 }

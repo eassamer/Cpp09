@@ -79,9 +79,9 @@ void PmergeMe::sort_vec(std::vector<int> &vec, int left, int right, int k)
         if (right - left + 1 <= k) {
             insertion_sort_vec(vec, left, right);
         }
-        else {
+        else { 
             int mid = left + (right - left) / 2;
-            
+
             sort_vec(vec, left, mid, k);
             sort_vec(vec, mid+1, right, k);
             merge_vec(vec, left, mid, right);
@@ -134,7 +134,6 @@ if (list.empty() || list.size() == 1) {
     return;
   }
 
-  // Split the list into two sublists
   std::list<int> left, right;
   size_t count = 0;
   for (std::list<int>::iterator it = list.begin(); it != list.end(); ++it) {
@@ -145,12 +144,8 @@ if (list.empty() || list.size() == 1) {
     }
     count++;
   }
-
-  // Recursively sort the sublists
   sort_lst(left);
   sort_lst(right);
-
-  // Merge the sorted sublists into a single sorted list
   list = merge_lst(left, right);
 }
 
@@ -204,7 +199,7 @@ double PmergeMe::sorter(char **av)
             std::cout << vec[i] << " ";
         std::cout << "[...]" << std::endl;
     }
-    std::cout << "Time to process a range of " << vec.size()<< " elements with std::vector: " << (double)v_time << " us" << std::endl;
-    std::cout << "Time to process a range of " << vec.size() <<" elements with std::list: " << (double)l_time << " us" << std::endl;
+    std::cout << "Time to process a range of " << vec.size()<< " elements with std::vector: " << std::setprecision(5) << v_time << " us" << std::endl;
+    std::cout << "Time to process a range of " << vec.size() <<" elements with std::list: " << std::setprecision(5) << l_time << " us" << std::endl;
     return 0;
 }

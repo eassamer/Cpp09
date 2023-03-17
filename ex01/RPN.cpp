@@ -25,6 +25,11 @@ void RPN::add_data(std::string data)
             stack.push(data[i] - '0');
         else
         {
+            if (stack.size() < 2)
+            {
+                std::cout << "Error" << std::endl;
+                exit(1);
+            }
             int b = stack.top();
             stack.pop();
             int a = stack.top();
@@ -37,6 +42,11 @@ void RPN::add_data(std::string data)
                 stack.push(a * b);
             else if (data[i] == '/')
                 stack.push(a / b);
+            else
+            {
+                std::cout << "Error" << std::endl;
+                exit(1);
+            }
         }
     }
     if (stack.size() == 1)
